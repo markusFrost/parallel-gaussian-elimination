@@ -1,11 +1,8 @@
 /*
- ============================================================================
- Name        : Gaussian.c
- Author      : Ryan Zhang
- Version     :
- Copyright   : It's patent
- Description : Hello World in C, Ansi-style
- ============================================================================
+ * Gaussian.c
+ *
+ *  Created on: Apr 27, 2009
+ *      Author: yzhang8
  */
 
 #include <stdio.h>
