@@ -7,11 +7,16 @@
 
 #include "Gaussian.h"
 #include "Gaussian_parallel.h"
+#include "Gaussian_Block_Parallel.h"
 
 #define MATRIX_ENTRY_VALUE_MAX 1000;
 
 int main(int argc, char* argv[]) {
 	puts("!!!Start Gaussian Elimination!!!");
+	if(argc !=4){
+		puts("usage: Gaussian size thread_max thread_threshold");
+		return EXIT_FAILURE;
+	}
 	int i, j;
 	size = atoi(argv[1]);
 	thread_num = atoi(argv[2]);//the maximum number of thread possible
@@ -28,15 +33,18 @@ int main(int argc, char* argv[]) {
 	srand(time(NULL));
 	for (i = 0; i < size; i++) {
 		vector_B[i] = ((double) rand()) / RAND_MAX * MATRIX_ENTRY_VALUE_MAX;
-		//vector_B[i] = rand() % MATRIX_ENTRY_VALUE_MAX;
 		test_Vector[i] = vector_B[i];
 		for (j = 0; j < size; j++) {
 			matrix_A[i][j] = ((double) rand()) / RAND_MAX * MATRIX_ENTRY_VALUE_MAX;
-			//matrix_A[i][j] = rand() % MATRIX_ENTRY_VALUE_MAX ;
 			test_Matrix[i][j] = matrix_A[i][j];
 		}
 	}
-	gaussian_elimination_all_parallel();//the
+	print_Gaussian("before Gaussian!");
+	////////////
+	//gaussian_elimination_parallel();
+	//gaussian_elimination_all_parallel();
+	gaussian_elimination_block_parallel();
+	////////////
 	double sumax = 0;
 	for (i = size - 1; i >= 0; i--) {//backward substitution
 		sumax = 0;

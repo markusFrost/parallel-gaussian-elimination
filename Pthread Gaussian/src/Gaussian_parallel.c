@@ -69,13 +69,12 @@ void gaussian_elimination_all_parallel() {
 		print_Gaussian(buffer);
 	}
 	time_sec_finish = time(NULL);
-	printf("\nGaussian elimination used %d sec\n", (time_sec_finish - time_sec_start));
+	printf("\nGaussian elimination used %d sec\n", (int)(time_sec_finish - time_sec_start));
 	free(p_threads);
 	free(thread_arg);
 }
 
 void gaussian_elimination_parallel() {
-	print_Gaussian("before Gaussian!");
 	time_t time_sec_start, time_sec_finish;
 	time_sec_start = time(NULL);
 	pthread_t* p_threads = malloc(thread_num * sizeof(pthread_t));
@@ -130,7 +129,7 @@ void gaussian_elimination_parallel() {
 		print_Gaussian(buffer);
 	}
 	time_sec_finish = time(NULL);
-	printf("\nGaussian elimination used %d sec\n", (time_sec_finish - time_sec_start));
+	printf("\nGaussian elimination used %d sec\n", (int)(time_sec_finish - time_sec_start));
 	free(p_threads);
 	free(thread_arg);
 }
