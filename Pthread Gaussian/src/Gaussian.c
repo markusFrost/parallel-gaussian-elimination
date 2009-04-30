@@ -8,6 +8,7 @@
 #include "Gaussian.h"
 #include "Gaussian_parallel.h"
 #include "Gaussian_Block_Parallel.h"
+#include "Gaussian_Reuse_Parallel.h"
 
 #define MATRIX_ENTRY_VALUE_MAX 1000;
 
@@ -43,7 +44,8 @@ int main(int argc, char* argv[]) {
 	////////////
 	//gaussian_elimination_parallel();
 	//gaussian_elimination_all_parallel();
-	gaussian_elimination_block_parallel();
+	//gaussian_elimination_block_parallel();
+	gaussian_elimination_reuse_parallel();
 	////////////
 	double sumax = 0;
 	for (i = size - 1; i >= 0; i--) {//backward substitution
