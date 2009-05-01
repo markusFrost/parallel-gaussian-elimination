@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 	int i, j;
 	size = atoi(argv[1]);
 	thread_num = atoi(argv[2]);//the maximum number of thread possible
-	thread_row_threshold = atoi(argv[3]);//the minimum number of rows a thread should be assigned to
+	block_size = atoi(argv[3]);//the minimum number of rows a thread should be assigned to
 	matrix_A = (double**) malloc(size * sizeof(double));
 	vector_B = (double*) malloc(size * sizeof(double));
 	double ** test_Matrix = (double**) malloc(size * sizeof(double));
@@ -48,7 +48,8 @@ int main(int argc, char* argv[]) {
 	}
 	print_Gaussian("before Gaussian!");
 	////////////
-	gaussian_sequential();
+	//gaussian_sequential();
+	gaussian_sequential_block();
 	////////////
 	double sumax = 0;
 	for (i = size - 1; i >= 0; i--) {//backward substitution
@@ -70,6 +71,7 @@ int main(int argc, char* argv[]) {
 		temp -= test_Vector[i];
 		l2 += temp * temp;
 	}
+	/*
 	for (i = 0; i < size; i++) {
 		for (j = 0; j < size; j++) {
 			printf("%f ", test_Matrix[i][j]);
@@ -78,6 +80,7 @@ int main(int argc, char* argv[]) {
 		printf("   %f", test_Vector[i]);
 		printf(" diff %f\n", temp);
 	}
+	*/
 	l2 = sqrt(l2);
 	printf(
 			"-----------------------------------------------------\nthe residue value is %f\n",
@@ -97,13 +100,13 @@ int main(int argc, char* argv[]) {
 
 inline void print_Gaussian(const char* s) {
 	int i, j;
-	puts(s);
+	/*puts(s);
 	for (i = 0; i < size; i++) {
 		for (j = 0; j < size; j++) {
 			printf("%f ", matrix_A[i][j]);
 		}
 		printf("   %f", vector_x[i]);
 		printf("   %f\n", vector_B[i]);
-	}
+	}*/
 }
 

@@ -9,5 +9,6 @@
 #define GAUSSIAN_SEQUENTIAL_H_
 
 void gaussian_sequential();
+void gaussian_sequential_block();
 
 #endif /* GAUSSIAN_SEQUENTIAL_H_ */

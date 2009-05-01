@@ -17,7 +17,7 @@
 double** matrix_A;
 double* vector_B;
 double *vector_x;
-int size, thread_num, thread_row_threshold;
+int size, thread_num, block_size;
 
 inline void print_Gaussian();
 
