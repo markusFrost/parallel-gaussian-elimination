@@ -7,13 +7,10 @@
  Description : Hello OpenMP World in C
  ============================================================================
  */
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include "omp.h"
+
 #include "Gaussian.h"
 #include "Gaussian_Sequential.h"
+#include "Gaussian_Parallel.h"
 
 #define MATRIX_ENTRY_VALUE_MAX 1000;
 
@@ -49,7 +46,8 @@ int main(int argc, char* argv[]) {
 	print_Gaussian("before Gaussian!");
 	////////////
 	//gaussian_sequential();
-	gaussian_sequential_block();
+	//gaussian_sequential_block();
+	gaussian_parallel();
 	////////////
 	double sumax = 0;
 	for (i = size - 1; i >= 0; i--) {//backward substitution
